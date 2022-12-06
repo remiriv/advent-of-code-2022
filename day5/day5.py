@@ -13,16 +13,12 @@ with open('day5/day5.txt') as file:
             if line[1 + 4 * i] != " ":
                 piles[i+1].insert(0, line[1 + 4 * i])
 
-    print(piles)
     for (index, line) in enumerate(lines):
         if index > stop_index:
             move, start, end = [int(s) for s in re.findall(r'\b\d+\b', line)]
 
-            print("yo", piles[start][-move:])
-            print("ye", move)
             piles[end].extend(piles[start][-move:])
             piles[start] = piles[start][0:-move]
-    print(piles)
     print("final", [crate[-1] for crate in piles[1:]])
 '''
 
